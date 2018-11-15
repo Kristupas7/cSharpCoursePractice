@@ -7,8 +7,10 @@ class Program
     static void Main()
     {
         Console.WriteLine("Iveskite skaiciu: ");
-        string Skaicius = Console.ReadLine();
-        Console.WriteLine(SkaiciusArNe(Skaicius));
+        string SkaiciusString = Console.ReadLine();
+        Console.WriteLine(SkaiciusArNe(SkaiciusString));
+        int SkaiciusInt = StringToInt(SkaiciusString);
+        Console.WriteLine(IsNumberInInterval(SkaiciusInt));
     }
     static bool SkaiciusArNe(string Tekstas)
     {
@@ -21,7 +23,21 @@ class Program
         }
         return true;
     }
-
+    static int StringToInt(string Skaicius)
+    {
+        return Convert.ToInt32(Skaicius);
+    }
+    static bool IsNumberInInterval(int Skaicius)
+    {
+        if(Skaicius>=-9 && Skaicius <= 9)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
  }
 
    
