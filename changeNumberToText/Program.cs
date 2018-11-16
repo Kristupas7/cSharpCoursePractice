@@ -2,8 +2,6 @@
 
 class Program
 {
-
-    
     static void Main()
     {
         string SkaiciusZodziais="";
@@ -17,103 +15,136 @@ class Program
                 SkaiciusZodziais = "minus";
                 SkaiciusInt = StringToInt(SkaiciusString);
                 Console.WriteLine(IsNumberInInterval(SkaiciusInt));
-                if (SkaiciusInt > 19 || SkaiciusInt < -19)
-                {
-                    NumbersToText20_90(ref SkaiciusZodziais, SkaiciusInt * (-2) + SkaiciusInt);
-                    OnesAndTensToText(ref SkaiciusZodziais, (SkaiciusInt * (-2) + SkaiciusInt)%10);
-                }
-                else
-                {
-                    OnesAndTensToText(ref SkaiciusZodziais, SkaiciusInt * (-2) + SkaiciusInt);
-                }
+                HundredsToText(ref SkaiciusZodziais, SkaiciusInt * (-2) + SkaiciusInt);
+                NumbersToText20_90(ref SkaiciusZodziais, SkaiciusInt * (-2) + SkaiciusInt);
+                OnesAndTensToText(ref SkaiciusZodziais, (SkaiciusInt * (-2) + SkaiciusInt));
             }
             else
             {
                 SkaiciusInt = StringToInt(SkaiciusString);
                 Console.WriteLine(IsNumberInInterval(SkaiciusInt));
-                if (SkaiciusInt > 19 || SkaiciusInt < -19)
-                {
-                    NumbersToText20_90(ref SkaiciusZodziais, SkaiciusInt);
-                    OnesAndTensToText(ref SkaiciusZodziais, SkaiciusInt % 10);
-                }
-                else
-                {
-                    OnesAndTensToText(ref SkaiciusZodziais, SkaiciusInt);
-                }
+                HundredsToText(ref SkaiciusZodziais, SkaiciusInt);
+                NumbersToText20_90(ref SkaiciusZodziais, SkaiciusInt);
+                OnesAndTensToText(ref SkaiciusZodziais, SkaiciusInt);
             }
             Console.WriteLine(SkaiciusZodziais);
             
         }
     }
-    static void OnesAndTensToText(ref string Zodziais, int Skaicius)
+    static void HundredsToText(ref string Zodziais, int Skaicius)
     {
-        switch (Skaicius)
+        switch(Skaicius / 100)
         {
-            case 0:
-                Zodziais = Zodziais + " nulis";
-                break;
             case 1:
-                Zodziais= Zodziais + " vienas";
+                Zodziais = Zodziais + " simtas";
                 break;
             case 2:
-                Zodziais = Zodziais + " du";
+                Zodziais = Zodziais + " du simtai";
                 break;
             case 3:
-                Zodziais = Zodziais + " trys";
+                Zodziais = Zodziais + " trys simtai";
                 break;
             case 4:
-                Zodziais = Zodziais + " keturi";
+                Zodziais = Zodziais + " keturi simtai";
                 break;
             case 5:
-                Zodziais = Zodziais + " penki";
+                Zodziais = Zodziais + " penki simtai";
                 break;
             case 6:
-                Zodziais = Zodziais + " sesi";
+                Zodziais = Zodziais + " sesi simtai";
                 break;
             case 7:
-                Zodziais = Zodziais + " septyni";
+                Zodziais = Zodziais + " septyni simtai";
                 break;
             case 8:
-                Zodziais = Zodziais + " astuoni";
+                Zodziais = Zodziais + " astuoni simtai";
                 break;
             case 9:
-                Zodziais = Zodziais + " devyni";
+                Zodziais = Zodziais + " devyni simtai";
                 break;
-            case 10:
-                Zodziais = Zodziais + " desimt";
+            case 0:
+                Zodziais = Zodziais + "";
                 break;
-            case 11:
-                Zodziais = Zodziais + " vienuolika";
-                break;
-            case 12:
-                Zodziais = Zodziais + " dvylika";
-                break;
-            case 13:
-                Zodziais = Zodziais + " trylika";
-                break;
-            case 14:
-                Zodziais = Zodziais + " keturiolika";
-                break;
-            case 15:
-                Zodziais = Zodziais + " penkiolika";
-                break;
-            case 16:
-                Zodziais = Zodziais + " sesiolika";
-                break;
-            case 17:
-                Zodziais = Zodziais +  " septyniolika";
-                break;
-            case 18:
-                Zodziais = Zodziais + " astuoniolika";
-                break;
-            case 19:
-                Zodziais = Zodziais + " devyniolika";
-                break;
+        }
+    }
+    static void OnesAndTensToText(ref string Zodziais, int Skaicius)
+    {
+        if (Skaicius % 100 < 20 && Skaicius % 100 > -20 && Skaicius>9 && Skaicius<-9 )
+        {
+            switch (Skaicius % 100)
+            {
+                case 10:
+                    Zodziais = Zodziais + " desimt";
+                    break;
+                case 11:
+                    Zodziais = Zodziais + " vienuolika";
+                    break;
+                case 12:
+                    Zodziais = Zodziais + " dvylika";
+                    break;
+                case 13:
+                    Zodziais = Zodziais + " trylika";
+                    break;
+                case 14:
+                    Zodziais = Zodziais + " keturiolika";
+                    break;
+                case 15:
+                    Zodziais = Zodziais + " penkiolika";
+                    break;
+                case 16:
+                    Zodziais = Zodziais + " sesiolika";
+                    break;
+                case 17:
+                    Zodziais = Zodziais + " septyniolika";
+                    break;
+                case 18:
+                    Zodziais = Zodziais + " astuoniolika";
+                    break;
+                case 19:
+                    Zodziais = Zodziais + " devyniolika";
+                    break;
+            }
+        }
+        else
+        {
+            switch (Skaicius % 10)
+            {
+                case 0:
+                    Zodziais = Zodziais + "";
+                    break;
+                case 1:
+                    Zodziais = Zodziais + " vienas";
+                    break;
+                case 2:
+                    Zodziais = Zodziais + " du";
+                    break;
+                case 3:
+                    Zodziais = Zodziais + " trys";
+                    break;
+                case 4:
+                    Zodziais = Zodziais + " keturi";
+                    break;
+                case 5:
+                    Zodziais = Zodziais + " penki";
+                    break;
+                case 6:
+                    Zodziais = Zodziais + " sesi";
+                    break;
+                case 7:
+                    Zodziais = Zodziais + " septyni";
+                    break;
+                case 8:
+                    Zodziais = Zodziais + " astuoni";
+                    break;
+                case 9:
+                    Zodziais = Zodziais + " devyni";
+                    break;
+            }
         }
     }
     static void NumbersToText20_90(ref string Zodziais, int Skaicius)
     {
-        switch (Skaicius / 10)
+        switch (Skaicius % 100 / 10)
         {
             case 2:
                 Zodziais = Zodziais + " dvidesimt";
@@ -139,6 +170,9 @@ class Program
             case 9:
                 Zodziais = Zodziais + " devyniasdesimt";
                 break;
+            case 0:
+                Zodziais = Zodziais + "";
+                break;
         }
     }
 
@@ -146,7 +180,7 @@ class Program
     {
         for (int i = 0; i < Tekstas.Length; i++)
         {
-            if (Tekstas[i] != '9' && Tekstas[i] != '8' && Tekstas[i] != '7'  && Tekstas[i] != '6' && Tekstas[i] != '5' && Tekstas[i] != '4' && Tekstas[i] != '3' && Tekstas[i] != '2' && Tekstas[i] != '1' && Tekstas[i] != '0' && Tekstas[0]!= '-'|| Tekstas[0] == '0')
+            if (Tekstas[i] != '9' && Tekstas[i] != '8' && Tekstas[i] != '7'  && Tekstas[i] != '6' && Tekstas[i] != '5' && Tekstas[i] != '4' && Tekstas[i] != '3' && Tekstas[i] != '2' && Tekstas[i] != '1' && Tekstas[i] != '0' && Tekstas[0]!= '-')
             {
                 Console.WriteLine("Bloga ivestis");
                 return false;
