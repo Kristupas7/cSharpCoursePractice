@@ -15,6 +15,7 @@ class Program
                 SkaiciusZodziais = "minus";
                 SkaiciusInt = StringToInt(SkaiciusString);
                 Console.WriteLine(IsNumberInInterval(SkaiciusInt));
+                ThousandsToText(ref SkaiciusZodziais, SkaiciusInt * (-2) + SkaiciusInt);
                 HundredsToText(ref SkaiciusZodziais, SkaiciusInt * (-2) + SkaiciusInt);
                 NumbersToText20_90(ref SkaiciusZodziais, SkaiciusInt * (-2) + SkaiciusInt);
                 OnesAndTensToText(ref SkaiciusZodziais, (SkaiciusInt * (-2) + SkaiciusInt));
@@ -23,6 +24,7 @@ class Program
             {
                 SkaiciusInt = StringToInt(SkaiciusString);
                 Console.WriteLine(IsNumberInInterval(SkaiciusInt));
+                ThousandsToText(ref SkaiciusZodziais, SkaiciusInt);
                 HundredsToText(ref SkaiciusZodziais, SkaiciusInt);
                 NumbersToText20_90(ref SkaiciusZodziais, SkaiciusInt);
                 OnesAndTensToText(ref SkaiciusZodziais, SkaiciusInt);
@@ -31,9 +33,33 @@ class Program
             
         }
     }
+    static void ThousandsToText(ref string Zodziais, int Skaicius)
+    {
+        if (Skaicius % 1000000 > 999)
+        {
+            if (Skaicius / 1000 % 10 == 1)
+            {
+                HundredsToText(ref Zodziais, Skaicius / 1000);
+                NumbersToText20_90(ref Zodziais, Skaicius / 1000);
+                OnesAndTensToText(ref Zodziais, Skaicius / 1000);
+                Zodziais = Zodziais + " tukstantis";
+            }
+            else
+            {
+                HundredsToText(ref Zodziais, Skaicius / 1000);
+                NumbersToText20_90(ref Zodziais, Skaicius / 1000);
+                OnesAndTensToText(ref Zodziais, Skaicius / 1000);
+                Zodziais = Zodziais + " tukstanciai";
+            }
+        }
+        else
+        {
+            Zodziais = Zodziais + "";
+        }
+    }
     static void HundredsToText(ref string Zodziais, int Skaicius)
     {
-        switch(Skaicius / 100)
+        switch(Skaicius % 1000 / 100)
         {
             case 1:
                 Zodziais = Zodziais + " simtas";
