@@ -15,6 +15,7 @@ class Program
                 SkaiciusZodziais = "minus";
                 SkaiciusInt = StringToInt(SkaiciusString);
                 Console.WriteLine(IsNumberInInterval(SkaiciusInt));
+                MillionsToText(ref SkaiciusZodziais, SkaiciusInt * (-2) + SkaiciusInt);
                 ThousandsToText(ref SkaiciusZodziais, SkaiciusInt * (-2) + SkaiciusInt);
                 HundredsToText(ref SkaiciusZodziais, SkaiciusInt * (-2) + SkaiciusInt);
                 NumbersToText20_90(ref SkaiciusZodziais, SkaiciusInt * (-2) + SkaiciusInt);
@@ -24,6 +25,7 @@ class Program
             {
                 SkaiciusInt = StringToInt(SkaiciusString);
                 Console.WriteLine(IsNumberInInterval(SkaiciusInt));
+                MillionsToText(ref SkaiciusZodziais, SkaiciusInt);
                 ThousandsToText(ref SkaiciusZodziais, SkaiciusInt);
                 HundredsToText(ref SkaiciusZodziais, SkaiciusInt);
                 NumbersToText20_90(ref SkaiciusZodziais, SkaiciusInt);
@@ -31,6 +33,30 @@ class Program
             }
             Console.WriteLine(SkaiciusZodziais);
             
+        }
+    }
+    static void MillionsToText(ref string Zodziais, int Skaicius)
+    {
+        if (Skaicius % 1000000000 > 999999)
+        {
+            if (Skaicius / 1000000 % 10 == 1)
+            {
+                HundredsToText(ref Zodziais, Skaicius / 1000000);
+                NumbersToText20_90(ref Zodziais, Skaicius / 1000000);
+                OnesAndTensToText(ref Zodziais, Skaicius / 1000000);
+                Zodziais = Zodziais + " milionas";
+            }
+            else
+            {
+                HundredsToText(ref Zodziais, Skaicius / 1000000);
+                NumbersToText20_90(ref Zodziais, Skaicius / 1000000);
+                OnesAndTensToText(ref Zodziais, Skaicius / 1000000);
+                Zodziais = Zodziais + " milionai";
+            }
+        }
+        else
+        {
+            Zodziais = Zodziais + "";
         }
     }
     static void ThousandsToText(ref string Zodziais, int Skaicius)
@@ -95,7 +121,7 @@ class Program
     }
     static void OnesAndTensToText(ref string Zodziais, int Skaicius)
     {
-        if (Skaicius % 100 < 20 && Skaicius % 100 > -20 && Skaicius>9 && Skaicius<-9 )
+        if (Skaicius % 100 < 20 && Skaicius % 100 >9 )
         {
             switch (Skaicius % 100)
             {
