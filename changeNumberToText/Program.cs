@@ -48,10 +48,20 @@ class Program
             }
             else
             {
-                HundredsToText(ref Zodziais, Skaicius / 1000000);
-                NumbersToText20_90(ref Zodziais, Skaicius / 1000000);
-                OnesAndTensToText(ref Zodziais, Skaicius / 1000000);
-                Zodziais = Zodziais + " milionai";
+                if (Skaicius / 1000000 % 100 < 20 && Skaicius / 1000000 % 100 > 9)
+                {
+                    HundredsToText(ref Zodziais, Skaicius / 1000000);
+                    NumbersToText20_90(ref Zodziais, Skaicius / 1000000);
+                    OnesAndTensToText(ref Zodziais, Skaicius / 1000000);
+                    Zodziais = Zodziais + " milionu";
+                }
+                else
+                {
+                    HundredsToText(ref Zodziais, Skaicius / 1000000);
+                    NumbersToText20_90(ref Zodziais, Skaicius / 1000000);
+                    OnesAndTensToText(ref Zodziais, Skaicius / 1000000);
+                    Zodziais = Zodziais + " milionai";
+                }
             }
         }
         else
@@ -72,10 +82,20 @@ class Program
             }
             else
             {
-                HundredsToText(ref Zodziais, Skaicius / 1000);
-                NumbersToText20_90(ref Zodziais, Skaicius / 1000);
-                OnesAndTensToText(ref Zodziais, Skaicius / 1000);
-                Zodziais = Zodziais + " tukstanciai";
+                if (Skaicius / 1000 % 100 < 20 && Skaicius / 1000 % 100 > 9)
+                {
+                    HundredsToText(ref Zodziais, Skaicius / 1000);
+                    NumbersToText20_90(ref Zodziais, Skaicius / 1000);
+                    OnesAndTensToText(ref Zodziais, Skaicius / 1000);
+                    Zodziais = Zodziais + " tukstanciu";
+                }
+                else
+                {
+                    HundredsToText(ref Zodziais, Skaicius / 1000);
+                    NumbersToText20_90(ref Zodziais, Skaicius / 1000);
+                    OnesAndTensToText(ref Zodziais, Skaicius / 1000);
+                    Zodziais = Zodziais + " tukstanciai";
+                }
             }
         }
         else
