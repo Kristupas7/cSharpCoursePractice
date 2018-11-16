@@ -17,19 +17,19 @@ class Program
                 SkaiciusZodziais = "minus";
                 SkaiciusInt = StringToInt(SkaiciusString);
                 Console.WriteLine(IsNumberInInterval(SkaiciusInt));
-                OnesToText(ref SkaiciusZodziais, SkaiciusInt*(-2)+SkaiciusInt);
+                OnesAndTensToText(ref SkaiciusZodziais, SkaiciusInt*(-2)+SkaiciusInt);
             }
             else
             {
                 SkaiciusInt = StringToInt(SkaiciusString);
                 Console.WriteLine(IsNumberInInterval(SkaiciusInt));
-                OnesToText(ref SkaiciusZodziais, SkaiciusInt);
+                OnesAndTensToText(ref SkaiciusZodziais, SkaiciusInt);
             }
             Console.WriteLine(SkaiciusZodziais);
             
         }
     }
-    static void OnesToText(ref string Zodziais, int Skaicius)
+    static void OnesAndTensToText(ref string Zodziais, int Skaicius)
     {
         switch (Skaicius)
         {
@@ -62,6 +62,36 @@ class Program
                 break;
             case 9:
                 Zodziais = Zodziais + " devyni";
+                break;
+            case 10:
+                Zodziais = Zodziais + "desimt";
+                break;
+            case 11:
+                Zodziais = Zodziais + "vienuolika";
+                break;
+            case 12:
+                Zodziais = Zodziais + "dvylika";
+                break;
+            case 13:
+                Zodziais = Zodziais + "trylika";
+                break;
+            case 14:
+                Zodziais = Zodziais + "keturiolika";
+                break;
+            case 15:
+                Zodziais = Zodziais + "penkiolika";
+                break;
+            case 16:
+                Zodziais = Zodziais + "sesiolika";
+                break;
+            case 17:
+                Zodziais = Zodziais + "septyniolika";
+                break;
+            case 18:
+                Zodziais = Zodziais + "astuoniolika";
+                break;
+            case 19:
+                Zodziais = Zodziais + "devyniolika";
                 break;
         }
     }
