@@ -17,13 +17,29 @@ class Program
                 SkaiciusZodziais = "minus";
                 SkaiciusInt = StringToInt(SkaiciusString);
                 Console.WriteLine(IsNumberInInterval(SkaiciusInt));
-                OnesAndTensToText(ref SkaiciusZodziais, SkaiciusInt*(-2)+SkaiciusInt);
+                if (SkaiciusInt > 19 || SkaiciusInt < -19)
+                {
+                    NumbersToText20_90(ref SkaiciusZodziais, SkaiciusInt * (-2) + SkaiciusInt);
+                    OnesAndTensToText(ref SkaiciusZodziais, (SkaiciusInt * (-2) + SkaiciusInt)%10);
+                }
+                else
+                {
+                    OnesAndTensToText(ref SkaiciusZodziais, SkaiciusInt * (-2) + SkaiciusInt);
+                }
             }
             else
             {
                 SkaiciusInt = StringToInt(SkaiciusString);
                 Console.WriteLine(IsNumberInInterval(SkaiciusInt));
-                OnesAndTensToText(ref SkaiciusZodziais, SkaiciusInt);
+                if (SkaiciusInt > 19 || SkaiciusInt < -19)
+                {
+                    NumbersToText20_90(ref SkaiciusZodziais, SkaiciusInt);
+                    OnesAndTensToText(ref SkaiciusZodziais, SkaiciusInt % 10);
+                }
+                else
+                {
+                    OnesAndTensToText(ref SkaiciusZodziais, SkaiciusInt);
+                }
             }
             Console.WriteLine(SkaiciusZodziais);
             
@@ -64,34 +80,64 @@ class Program
                 Zodziais = Zodziais + " devyni";
                 break;
             case 10:
-                Zodziais = Zodziais + "desimt";
+                Zodziais = Zodziais + " desimt";
                 break;
             case 11:
-                Zodziais = Zodziais + "vienuolika";
+                Zodziais = Zodziais + " vienuolika";
                 break;
             case 12:
-                Zodziais = Zodziais + "dvylika";
+                Zodziais = Zodziais + " dvylika";
                 break;
             case 13:
-                Zodziais = Zodziais + "trylika";
+                Zodziais = Zodziais + " trylika";
                 break;
             case 14:
-                Zodziais = Zodziais + "keturiolika";
+                Zodziais = Zodziais + " keturiolika";
                 break;
             case 15:
-                Zodziais = Zodziais + "penkiolika";
+                Zodziais = Zodziais + " penkiolika";
                 break;
             case 16:
-                Zodziais = Zodziais + "sesiolika";
+                Zodziais = Zodziais + " sesiolika";
                 break;
             case 17:
-                Zodziais = Zodziais + "septyniolika";
+                Zodziais = Zodziais +  " septyniolika";
                 break;
             case 18:
-                Zodziais = Zodziais + "astuoniolika";
+                Zodziais = Zodziais + " astuoniolika";
                 break;
             case 19:
-                Zodziais = Zodziais + "devyniolika";
+                Zodziais = Zodziais + " devyniolika";
+                break;
+        }
+    }
+    static void NumbersToText20_90(ref string Zodziais, int Skaicius)
+    {
+        switch (Skaicius / 10)
+        {
+            case 2:
+                Zodziais = Zodziais + " dvidesimt";
+                break;
+            case 3:
+                Zodziais = Zodziais + " trisdesimt";
+                break;
+            case 4:
+                Zodziais = Zodziais + " keturiasdesimt";
+                break;
+            case 5:
+                Zodziais = Zodziais + " penkiasdesimt";
+                break;
+            case 6:
+                Zodziais = Zodziais + " sesiasdesimt";
+                break;
+            case 7:
+                Zodziais = Zodziais + " septyniasdesimt";
+                break;
+            case 8:
+                Zodziais = Zodziais + " astuoniasdesimt";
+                break;
+            case 9:
+                Zodziais = Zodziais + " devyniasdesimt";
                 break;
         }
     }
