@@ -10,29 +10,34 @@ class Program
         string SkaiciusString = Console.ReadLine();
         if (SkaiciusArNe(SkaiciusString))
         {
-            if (SkaiciusString[0] == '-')
+            if (StringToInt(SkaiciusString) == 0)
             {
-                SkaiciusZodziais = "minus";
-                SkaiciusInt = StringToInt(SkaiciusString);
-                Console.WriteLine(IsNumberInInterval(SkaiciusInt));
-                MillionsToText(ref SkaiciusZodziais, SkaiciusInt * (-2) + SkaiciusInt);
-                ThousandsToText(ref SkaiciusZodziais, SkaiciusInt * (-2) + SkaiciusInt);
-                HundredsToText(ref SkaiciusZodziais, SkaiciusInt * (-2) + SkaiciusInt);
-                NumbersToText20_90(ref SkaiciusZodziais, SkaiciusInt * (-2) + SkaiciusInt);
-                OnesAndTensToText(ref SkaiciusZodziais, (SkaiciusInt * (-2) + SkaiciusInt));
+                SkaiciusZodziais = "nulis";
             }
             else
             {
-                SkaiciusInt = StringToInt(SkaiciusString);
-                Console.WriteLine(IsNumberInInterval(SkaiciusInt));
-                MillionsToText(ref SkaiciusZodziais, SkaiciusInt);
-                ThousandsToText(ref SkaiciusZodziais, SkaiciusInt);
-                HundredsToText(ref SkaiciusZodziais, SkaiciusInt);
-                NumbersToText20_90(ref SkaiciusZodziais, SkaiciusInt);
-                OnesAndTensToText(ref SkaiciusZodziais, SkaiciusInt);
+                if (SkaiciusString[0] == '-')
+                {
+                    SkaiciusZodziais = "minus";
+                    SkaiciusInt = StringToInt(SkaiciusString);
+                    MillionsToText(ref SkaiciusZodziais, SkaiciusInt * (-1));
+                    ThousandsToText(ref SkaiciusZodziais, SkaiciusInt * (-1));
+                    HundredsToText(ref SkaiciusZodziais, SkaiciusInt * (-1));
+                    NumbersToText20_90(ref SkaiciusZodziais, SkaiciusInt * (-1));
+                    OnesAndTensToText(ref SkaiciusZodziais, SkaiciusInt * (-1));
+                }
+                else
+                {
+                    SkaiciusInt = StringToInt(SkaiciusString);
+                    MillionsToText(ref SkaiciusZodziais, SkaiciusInt);
+                    ThousandsToText(ref SkaiciusZodziais, SkaiciusInt);
+                    HundredsToText(ref SkaiciusZodziais, SkaiciusInt);
+                    NumbersToText20_90(ref SkaiciusZodziais, SkaiciusInt);
+                    OnesAndTensToText(ref SkaiciusZodziais, SkaiciusInt);
+                }
+                
             }
             Console.WriteLine(SkaiciusZodziais);
-            
         }
     }
     static void MillionsToText(ref string Zodziais, int Skaicius)
